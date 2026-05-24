@@ -56,14 +56,35 @@ bin/
 
 ## Como Executar
 
-1. Compile o projeto completo:
+1. Compilar o projeto completo:
    ```sh
    javac -d bin src/PrincipalProjeto.java src/Etapa1/*.java src/Etapa2/*.java src/Etapa3/*.java src/Etapa4/*.java
    ```
-2. Execute todas as etapas em sequência:
+2. Execute todas as etapas:
    ```sh
    java -cp bin PrincipalProjeto
    ```
+
+  etapa1:
+  ```sh
+  java -cp bin Etapa1.PrincipalLabirinto
+  ```
+
+  etapa2:
+  ```sh
+  java -cp bin Etapa2.PrincipalCandidatos
+  ```
+
+  etapa3:
+  ```sh
+  java -cp bin Etapa3.PrincipalEtapa3
+  ```
+
+  etapa4:
+  ```sh
+  java -cp bin Etapa4.PrincipalEtapa4
+  ```
+
 3. Execute os validadores:
    ```sh
    java -cp bin Etapa1.ValidadorEtapa1EstudanteMRK
@@ -72,18 +93,3 @@ bin/
    java -cp bin Etapa4.ValidadorEtapa4MRK
    ```
 
-## Entrega
-- Envie um arquivo .zip contendo **todas as pastas e arquivos do projeto**.
-- Grave um vídeo de até 4 minutos mostrando:
-  - Compilação e execução do programa
-  - Demonstração das funcionalidades de cada etapa
-  - Execução do validador e nota atribuída
-
-## Observações
-- Siga rigorosamente as estruturas de dados solicitadas em cada etapa.
-- Não copie códigos da internet ou de colegas.
-- O vídeo é obrigatório para avaliação.
-
----
-
-**Bons estudos e boa sorte!**
