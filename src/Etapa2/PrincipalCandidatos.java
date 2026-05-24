@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.List;
+import java.util.Random;
+import java.util.Scanner;
 
 public class PrincipalCandidatos {
     public static void main(String[] args) {
@@ -19,19 +21,31 @@ public class PrincipalCandidatos {
         imprime("Ordenados por partido", candidatos);
 
         OrdenarCandidatos.ordenaCandidatosPorNome(candidatos);
-        int posicao = OrdenarCandidatos.pesquisaBinariaCandidatos(candidatos, candidatos[0].getNome());
-        System.out.println("Pesquisa binaria encontrou posicao: " + posicao);
+        String nomePesquisado = leNomePesquisado(candidatos[0].getNome());
+        int posicao = OrdenarCandidatos.pesquisaBinariaCandidatos(candidatos, nomePesquisado);
+
+        System.out.println();
+        if (posicao >= 0) {
+            System.out.println("Candidato encontrado:");
+            System.out.println(candidatos[posicao]);
+        } else {
+            System.out.println("Candidato nao encontrado: " + nomePesquisado);
+        }
     }
 
     private static Candidato[] carregaCandidatos() {
         try {
             List<String> nomes = leArquivo("nomes.txt");
             List<String> partidos = leArquivo("partidos.txt");
-            int quantidade = Math.min(nomes.size(), partidos.size());
+            Random random = new Random();
+            int quantidade = random.nextInt(100) + 1;
             Candidato[] candidatos = new Candidato[quantidade];
 
             for (int i = 0; i < quantidade; i++) {
-                candidatos[i] = new Candidato(nomes.get(i), partidos.get(i), (i * 37 + 13) % 100);
+                String nome = nomes.get(random.nextInt(nomes.size()));
+                String partido = partidos.get(random.nextInt(partidos.size()));
+                int votos = random.nextInt(1000);
+                candidatos[i] = new Candidato(nome, partido, votos);
             }
 
             return candidatos;
@@ -51,6 +65,21 @@ public class PrincipalCandidatos {
         }
 
         return Files.readAllLines(Path.of("Etapa2", nomeArquivo));
+    }
+
+    private static String leNomePesquisado(String nomePadrao) {
+        System.out.println();
+        System.out.print("Informe o nome para pesquisa binaria ou pressione Enter para usar " + nomePadrao + ": ");
+
+        Scanner scanner = new Scanner(System.in);
+        if (scanner.hasNextLine()) {
+            String nome = scanner.nextLine().trim();
+            if (!nome.isEmpty()) {
+                return nome;
+            }
+        }
+
+        return nomePadrao;
     }
 
     private static void imprime(String titulo, Candidato[] candidatos) {
