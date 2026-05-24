@@ -2,15 +2,34 @@ package Etapa3;
 
 public class PrincipalEtapa3 {
     public static void main(String[] args) {
-        StaticList<String> lista = new StaticList<>(5);
-        lista.insert("A", 0);
-        lista.insert("B", 1);
-        lista.insert("A", 2);
-        System.out.println("Quantidade de A: " + lista.contaElementos("A"));
+        System.out.println("===========================================================================");
+        System.out.println("         RELATORIO DE EXECUCAO");
+        System.out.println("===========================================================================");
 
-        StaticStack<String> pilha = new StaticStack<>(5);
-        pilha.push("(");
-        pilha.push(")");
-        System.out.println("Parenteses balanceados: " + new Etapa3().checkBrackets(pilha));
+        System.out.println("Teste 1: Contagem de Elementos em uma Lista Estatica");
+        StaticList<Integer> lista = new StaticList<>(10);
+        lista.insert(1, 0);
+        lista.insert(2, 1);
+        lista.insert(3, 2);
+        lista.insert(1, 3);
+        lista.insert(2, 4);
+
+        int contagem = lista.contaElementos(1);
+        System.out.println("O elemento 1 aparece " + contagem + " vezes na lista.");
+        System.out.println("---------------------------------------------------");
+
+        System.out.println("Teste 2: Verificacao de Parenteses Agrupados");
+        StaticStack<Character> pilha = new StaticStack<>(5);
+        pilha.push('(');
+        pilha.push('A');
+        pilha.push('+');
+        pilha.push('B');
+        pilha.push(')');
+
+        Etapa3 etapa3 = new Etapa3();
+        boolean resultado = etapa3.checkBrackets(pilha);
+
+        System.out.println("A expressao tem parenteses agrupados corretamente? " + resultado);
+        System.out.println("---------------------------------------------------");
     }
 }
