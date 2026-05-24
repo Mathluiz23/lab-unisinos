@@ -1,0 +1,9 @@
+.DS_Store
+.vscode/
+bin/
+*.class
+*.aiff
+audio_etapa*.txt
+roteiro_video*.txt
+teste_audio*
+teste_default*
