@@ -5,6 +5,10 @@ public class PrincipalLabirinto {
         Labirinto labirinto = new Labirinto();
         labirinto.criaLabirinto("src/Etapa1/labirinto.txt");
 
+        System.out.println("Labirinto original:");
+        labirinto.imprimeLabirinto();
+        System.out.println();
+
         if (labirinto.percorreLabirinto()) {
             System.out.println("Solução encontrada:");
             labirinto.imprimeLabirinto();
